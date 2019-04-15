@@ -231,7 +231,7 @@ class BaseWebDriver(DriverAPI):
 
     def read_config(self, section, key):
         config = configparser.ConfigParser()
-        config.read("/Users/bolotkadyraliev/Documents/Django_behave/config.cfg")
+        config.read("path_of_your_config.cfg_file")
         return config.get(section, key)
 
     def is_element_visible_by_css(self, css_selector, wait_time=None):
