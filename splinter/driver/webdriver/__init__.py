@@ -232,12 +232,10 @@ class BaseWebDriver(DriverAPI):
                     self.fill("email", user_name)
                     self.fill("password", password)
                     self.click_link_by_xpath("//button[contains(text(), 'Log In')]")
-                    print('inside if statement------')
             else:
                 self.fill("email", user_name)
                 self.fill("password", password)
                 self.click_link_by_xpath("//button[contains(text(), 'Log In')]")
-                print("inside else statement--------")
 
         except ElementDoesNotExist:
             print("You already signed in to: " + self.title)
