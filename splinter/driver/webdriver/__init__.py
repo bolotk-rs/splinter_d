@@ -219,16 +219,25 @@ class BaseWebDriver(DriverAPI):
                 return True
         return False
 
-    def login_to_RS_account(self, user_name, password):
+    def login_to_account_page(self, user_name, password):
         from splinter.exceptions import ElementDoesNotExist
 
         try:
-            elm = self.is_element_not_visible_by_xpath("//*[contains(text(), 'Log In')]")
-            if not elm:
-                self.click_link_by_xpath("//*[contains(text(), 'Log In')]")
+            title = self.title
+
+            if title != 'Log In RedShelf':
+                elm = self.is_element_not_visible_by_xpath("//*[contains(text(), 'Log In')]")
+                if not elm:
+                    self.click_link_by_xpath("//*[contains(text(), 'Log In')]")
+                    self.fill("email", user_name)
+                    self.fill("password", password)
+                    self.click_link_by_xpath("//button[contains(text(), 'Log In')]")
+                    print('inside if statement------')
+            else:
                 self.fill("email", user_name)
                 self.fill("password", password)
                 self.click_link_by_xpath("//button[contains(text(), 'Log In')]")
+                print("inside else statement--------")
 
         except ElementDoesNotExist:
             print("You already signed in to: " + self.title)
