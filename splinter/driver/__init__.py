@@ -186,6 +186,17 @@ class DriverAPI(InheritedDocs("_DriverAPI", (object,), {})):
             "%s doesn't support finding elements by value." % self.driver_name
         )
 
+    def find_by_class(self, class_value):
+        """
+        Finds elements in current page by their text.
+
+        Returns an instance of :class:`ElementList <splinter.element_list.ElementList>`
+        """
+        raise NotImplementedError(
+            "%s doesn't support finding elements by class." % self.driver_name
+        )    
+
+
     def find_by_text(self, text):
         """
         Finds elements in current page by their text.
@@ -394,6 +405,10 @@ class DriverAPI(InheritedDocs("_DriverAPI", (object,), {})):
         Clicks in a link by partial content of its text.
         """
         return self.find_link_by_partial_text(partial_text).first.click()
+
+    def click_link_by_class(self, class_value):
+        """ clicks by class name"""
+        return self.find_by_class(class_value).first.click()    
 
     def click_link_by_id(self, id):
         """

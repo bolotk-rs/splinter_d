@@ -264,6 +264,9 @@ class BaseWebDriver(DriverAPI):
     def is_element_visible_by_xpath(self, xpath, wait_time=None):
         return self.is_element_visible(self.find_by_xpath, xpath, wait_time)
 
+    def is_element_visible_by_class(self, class_name, wait_time=None):
+        return self.is_element_visible(self.find_by_class, class_name, wait_time)
+        
     def is_element_not_visible_by_xpath(self, xpath, wait_time=None):
         return self.is_element_not_visible(self.find_by_xpath, xpath, wait_time)
 
@@ -480,6 +483,11 @@ class BaseWebDriver(DriverAPI):
         return self.find_by_xpath(
             '//*[text()="%s"]' % text, original_find="text", original_query=text
         )
+
+    def find_by_class(self, class_value):
+        return self.find_by_xpath(
+        '//*[@class="%s"]' % class_value, original_find="class_value", original_query=class_value
+        )      
 
     def find_by_id(self, id):
         self.driver.implicitly_wait(4) #line was added by me
