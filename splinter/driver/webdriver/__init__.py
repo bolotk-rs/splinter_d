@@ -219,7 +219,7 @@ class BaseWebDriver(DriverAPI):
                 return True
         return False
 
-    def login_to_account_page(self, user_name, password):
+    def sign_in(self, user_name, password):
         from splinter.exceptions import ElementDoesNotExist
 
         try:
@@ -252,7 +252,7 @@ class BaseWebDriver(DriverAPI):
 
     def read_config(self, section, key):
         config = configparser.ConfigParser()
-        config.read("path_of_your_config.cfg_file")
+        config.read("./config.cfg")
         return config.get(section, key)
 
     def is_element_visible_by_css(self, css_selector, wait_time=None):
