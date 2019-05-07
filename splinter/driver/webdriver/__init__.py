@@ -219,7 +219,7 @@ class BaseWebDriver(DriverAPI):
                 return True
         return False
 
-    def sign_in(self, user_name, password):
+    def login(self, user_name, password):
         from splinter.exceptions import ElementDoesNotExist
 
         try:
