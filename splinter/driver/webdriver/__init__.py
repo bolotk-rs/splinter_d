@@ -219,7 +219,7 @@ class BaseWebDriver(DriverAPI):
                 return True
         return False
 
-    def sign_in(self, user_name, password):
+    def login(self, user_name, password):
         from splinter.exceptions import ElementDoesNotExist
 
         try:
@@ -239,6 +239,16 @@ class BaseWebDriver(DriverAPI):
 
         except ElementDoesNotExist:
             print("You already signed in to: " + self.title)
+
+    def logout(self):
+        _el = self.is_element_visible_by_xpath("//button[@*='User Menu Toggle']", wait_time=2)
+
+        if _el:
+            self.click_link_by_xpath("//button[@*='User Menu Toggle']")
+        else:
+            self.click_link_by_xpath("//div[@class='rs-navbar-nav-item']")
+
+        self.click_link_by_xpath("//*[contains(text(), 'Log Out')]")        
 
     def is_element_not_visible(self, finder, selector, wait_time=None):
         wait_time = wait_time or self.wait_time
