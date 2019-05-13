@@ -219,6 +219,26 @@ class BaseWebDriver(DriverAPI):
                 return True
         return False
 
+    def clear_element_by_xpath(self, xpath):
+        """
+        Clears field by xpath.
+        """
+        return self.find_by_xpath(xpath).first.clear()
+
+    def clear_element_by_id(self, id):
+        """
+        Clears field by id.
+        """
+        return self.find_by_id(id).first.clear()
+
+    def clear_element_by_css(self, css):
+        """
+        Clears field by css.
+        """
+        return self.find_by_css(css).first.clear()    
+
+
+
     def login(self, user_name, password):
         from splinter.exceptions import ElementDoesNotExist
 
