@@ -52,13 +52,6 @@ Documentation
 
 External links
 ==============
-* `Django Full Stack Testing and BDD with Lettuce and Splinter <http://cilliano.com/blog/2011/02/07/django-bdd-with-lettuce-and-splinter/>`_
-
-* `Splinter: Python tool for acceptance tests on web applications <https://f.souza.cc/2011/05/splinter-python-tool-for-acceptance.html/>`_
-
-* `Testes de aceitação com Lettuce e Splinter (pt-br) <http://www.slideshare.net/franciscosouza/testes-de-aceitao-com-lettuce-e-splinter?from=ss_embed>`_
-
-* `salad <https://github.com/salad/salad>`_, a nice mix of great BDD ingredients (splinter + `lettuce <http://lettuce.it>`_ integration)
 
 * `behave-django <https://github.com/mixxorz/behave-django>`_, BDD testing in Django using `Behave <http://pythonhosted.org/behave/>`_. Works well with splinter.
 
