@@ -235,7 +235,7 @@ class BaseWebDriver(DriverAPI):
         """
         Clears field by css.
         """
-        return self.find_by_css(css).first.clear()    
+        return self.find_by_css(css).first.clear()
 
 
 
@@ -260,6 +260,16 @@ class BaseWebDriver(DriverAPI):
         except ElementDoesNotExist:
             print("You already signed in to: " + self.title)
 
+        #accepts terms of use
+        try:
+            self.click_link_by_xpath("//input[@name='terms_of_use']")
+            self.click_link_by_xpath("//input[@name='privacy_policy']")
+            self.click_link_by_xpath("//input[@name='age_policy']")
+            self.click_link_by_xpath("//button[contains(text(), 'Accept and Continue')]")
+
+        except ElementDoesNotExist:
+            print('')
+
     def logout(self):
         _el = self.is_element_visible_by_xpath("//button[@*='User Menu Toggle']", wait_time=2)
 
@@ -268,7 +278,7 @@ class BaseWebDriver(DriverAPI):
         else:
             self.click_link_by_xpath("//div[@class='rs-navbar-nav-item']")
 
-        self.click_link_by_xpath("//*[contains(text(), 'Log Out')]")        
+        self.click_link_by_xpath("//*[contains(text(), 'Log Out')]")
 
     def is_element_not_visible(self, finder, selector, wait_time=None):
         wait_time = wait_time or self.wait_time
